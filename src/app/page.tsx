@@ -28,6 +28,8 @@ const Home = function () {
 
   const [summaryText, setSummaryText] = useState("");
 
+  const [videoTitle, setVideoTitle] = useState("");
+
   // const {
   //   register,
   //   formState: { errors },
@@ -56,6 +58,7 @@ const Home = function () {
       //console.log(youtubeURL.replace("watch?v=", "v/"))
 
       setIframeURL("https://www.youtube.com/embed/"+ youtube_parser(youtubeURL))
+      setValidURL(true);
 
       // processVideo(formData.get('URLInput') as string);
 
@@ -63,9 +66,10 @@ const Home = function () {
 
       console.log(generatedText)
       setSummaryText(generatedText)
-      
 
-      setValidURL(true);
+      fetch(`https://noembed.com/embed?dataType=json&url=${youtubeURL}`)
+      .then(res => res.json())
+      .then(data => {console.log('fetch', data.title); setVideoTitle(data.title) })
 
       setSummarized(true);
 
@@ -84,7 +88,7 @@ const Home = function () {
       {/* <div className="mx-auto bg-white h-screen w-full">
         <NavigationBar /> */}
       
-        <form action={handleSubmit} className="flex justify-center flex-col mt-10 w-4/5 mx-auto">
+        <form action={handleSubmit} className="flex justify-center flex-col mt-5 md:mt-10 w-4/5 mx-auto">
           <p className="text-black text-center text-xl pb-10">Summarize a Youtube video in seconds!</p>
           <div className="flex flex-row justify-center" >
             <input name="URLInput" className="w-3/4  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 ps-4 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-10" placeholder="Youtube URL"/>
@@ -98,13 +102,13 @@ const Home = function () {
         </form>
 
         
-          <div className={`${summarized ? 'flex' : 'hidden'} pt-10 flex-row mx-5 flex-wrap justify-center gap-y-20`}>
-            <div className="flex flex-col">
-              <iframe width={444.4} height={250} className="" src={iframeURL}></iframe>
-              
+          <div className={`${summarized ? 'flex' : 'hidden'} py-10 flex-row flex-wrap justify-center gap-y-10 px-10 bg-white `}>
+            <div className="flex flex-col gap-y-5 ">
+              <iframe width={320} height={200} className=" aspect-video md:w-auto mx-auto" src={iframeURL}></iframe>
+              <div className="px-10 max-w-[420px] font-semibold text-xs  text-center mx-auto text-black dark:white ">{videoTitle}</div>
             </div>
             
-            <div className="justify-center mx-10 h-[250px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100"></div>
+            <div className="hidden md:block justify-center mx-10 h-[350px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100"></div>
             {/* <div className="text-black dark:text-white"> */}
             <ModernTextArea text={summaryText}/>
                 {/* <textarea id="message"  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" defaultValue={summaryText}></textarea> */}

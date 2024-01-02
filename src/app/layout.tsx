@@ -19,10 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <div className="mx-auto bg-white h-screen w-full">
+      {/* <div className="mx-auto bg-white h-screen w-full"> */}
         <NavigationBar />
         {children}
-      </div>
+      {/* </div> */}
       </body>
     </html>
   )
