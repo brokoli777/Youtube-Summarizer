@@ -7,13 +7,13 @@ import React from 'react'
 
 function NavigationBar() {
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded className='mx-10 pt-5'>
       <Navbar.Brand as={Link} href="/">
-        <span className="text-md self-center flex flex-row whitespace-nowrap font-semibold text-black dark:text-white"> 
+        <span className=" text-xl self-center flex flex-row whitespace-nowrap font-semibold text-black dark:text-white"> 
           <svg className="pr-2 w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 16.5c0-1-8-2.7-9-2V1.8c1-1 9 .707 9 1.706M10 16.5V3.506M10 16.5c0-1 8-2.7 9-2V1.8c-1-1-9 .707-9 1.706"/>
       </svg>
-        Youtube Video Summarizer
+        YouTubeSum
       </span>
       </Navbar.Brand>
       <Navbar.Toggle />
@@ -21,12 +21,12 @@ function NavigationBar() {
         <Navbar.Link href="/" active>
           Home
         </Navbar.Link>
-        <Navbar.Link as={Link} href="/about">
+        <Navbar.Link as={Link} href="#about">
           About
         </Navbar.Link>
-        <Navbar.Link href="#">Services</Navbar.Link>
+        {/* <Navbar.Link href="#">Services</Navbar.Link>
         <Navbar.Link href="#">Pricing</Navbar.Link>
-        <Navbar.Link href="#">Contact</Navbar.Link>
+        <Navbar.Link href="#">Contact</Navbar.Link> */}
       </Navbar.Collapse>
     </Navbar>
   );
