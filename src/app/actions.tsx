@@ -24,7 +24,7 @@ export async function processVideo (youtubeURL:string): Promise<string> {
         <|end_of_turn|>
         GPT4 Correct Assistant: Hi
         <|end_of_turn|>
-        GPT4 Correct User: Give a comprehensive overview using bullet points from this text:
+        GPT4 Correct User: Give a comprehensive overview using bullet points from this video:
         ${combinedText} 
         <|end_of_turn|>
         GPT4 Correct Assistant:`,
