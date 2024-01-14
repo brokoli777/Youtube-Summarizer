@@ -30,14 +30,12 @@ export async function processVideo (youtubeURL:string): Promise<string> {
         GPT4 Correct Assistant:`,
         parameters: { max_new_tokens: 500, return_full_text:false}
       })
-    
 
       return output.generated_text
-    // return "abcd 123"
   
     } catch (error) {
       console.error('Error processing video:', error);
-      return ""
+      return "Error Summarizing Video. The video might be too long or has transcription disabled."
     }
 }
 
