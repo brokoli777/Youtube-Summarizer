@@ -14,6 +14,8 @@ interface Sentence {
 
 export async function processVideo (youtubeURL:string): Promise<string> {
     try {
+      console.log("Processing Video: ", youtubeURL);
+
       const doc:Sentence[] = await YoutubeTranscript.fetchTranscript(youtubeURL);
       const combinedText:string = doc.map((sentence:Sentence) => sentence.text).join(" ");
 
@@ -30,6 +32,8 @@ export async function processVideo (youtubeURL:string): Promise<string> {
         GPT4 Correct Assistant:`,
         parameters: { max_new_tokens: 500, return_full_text:false}
       })
+
+      console.log("Output: ",output.generated_text) ;
 
       return output.generated_text
   
