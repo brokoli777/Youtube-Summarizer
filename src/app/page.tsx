@@ -1,10 +1,7 @@
 "use client";
 
-import NavigationBar from "./components/navbar";
-import { Button } from "flowbite-react";
 import { useState } from "react";
 import Image from "next/image";
-import SearchIcon from "../../public/SearchIcon.png";
 import WomanHeroImage from "../../public/crop-3d-female-character-working-laptop-while-sitting-chair-bgremove.png";
 import LaptopHeroImg from "../../public/SummarizeInstructionsHeroImg.jpg";
 
