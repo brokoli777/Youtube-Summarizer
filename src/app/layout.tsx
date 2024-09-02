@@ -6,7 +6,7 @@ import NavigationBar from "./components/navbar"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Youtube Summarizer',
+  title: 'YouTubeSummary',
   description: 'Summarize YouTube videos in seconds',
 }
 

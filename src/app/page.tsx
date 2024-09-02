@@ -43,17 +43,19 @@ const Home = function () {
     const youtubeURL: any = formData.get("URLInput");
 
     if (youtubeURL && isValidYouTubeUrl(youtubeURL)) {
-      var parsedURL =
-        "https://www.youtube.com/embed/" + (await youtube_parser(youtubeURL));
 
-      setIframeURL(parsedURL);
+      const parsedURL = await youtube_parser(youtubeURL);
+      var youtubeEmbedURL = "https://www.youtube.com/embed/" + parsedURL;
+
+      setIframeURL(youtubeEmbedURL);
       setValidURL(true);
 
       setSummarized(false);
       setLoading(true);
 
       var generatedText: string = await processVideo(
-        formData.get("URLInput") as string
+        // formData.get("URLInput") as string
+        "https://www.youtube.com/watch?v=" + parsedURL
       );
 
       await fetch(`https://noembed.com/embed?dataType=json&url=${youtubeURL}`)
