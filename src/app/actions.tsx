@@ -7,8 +7,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-//const prompt = "Please create a summary of this YouTube video transcript using bullet points. DON'T USE MARKDOWN. Show it as normal text, using sections and bullet points when needed. Focus on the key points, main ideas, and any important details or action items mentioned. Ensure the summary is easy to read and highlights the most important aspects of the video.:\n\n";
-const prompt = "Please summarize the following YouTube video transcript using bullet points (Don't use markdown formatting). Focus on the most important aspects of the video, highlighting key details, action items, and any notable ideas presented. Make sure the summary is concise, easy to read, and captures the main points of the video.:\n\n";
+const prompt = "Please summarize the following YouTube video transcript. Focus on the most important aspects of the video, highlighting key details, action items, and any notable ideas presented. Make sure the summary is concise, easy to read, and captures the main points of the video:\n\n";
 
 const getTranscript = async ( url: string): Promise<(string | undefined)[] | undefined> => {
   const youtube = await Innertube.create({
